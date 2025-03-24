@@ -1,0 +1,496 @@
+# Unilever configuration for data generator
+# User counts and overlapping percentages
+user_counts:
+  total_crm_users: 500000
+  crm_users_with_transactions_percentage: 0.80
+  total_website_events_users: 800000
+  website_users_with_transactions_percentage: 0.30
+  website_users_in_crm_percentage: 0.50
+  total_data_provider_users: 1000000
+  data_provider_users_in_website_percentage: 0.20
+  data_provider_users_in_crm_percentage: 0.35
+
+# Website related configuration
+website:
+  names:
+    - "dove.com"
+    - "axe.com"
+    - "hellmanns.com"
+    - "benandjerrys.com"
+    - "vaseline.com"
+
+  page_categories:
+    - "Product Pages"
+    - "Collections & Lines"
+    - "Tips & Advice"
+    - "Sustainability"
+    - "About Us"
+    - "Customer Service"
+    - "Shopping Cart"
+    - "Where to Buy"
+
+  page_urls:
+    "dove.com":
+      - "dove.com/products/body-wash/deep-moisture-body-wash"
+      - "dove.com/products/deodorant/original-antiperspirant"
+      - "dove.com/collections/self-esteem-project"
+      - "dove.com/tips/skin-care/moisturizing-dry-skin-guide"
+      - "dove.com/about/our-vision"
+      - "dove.com/customer-service/faqs"
+      - "dove.com/products/hair-care/intensive-repair-shampoo"
+      - "dove.com/collections/dermaseries"
+      - "dove.com/cart"
+      - "dove.com/sustainability/plastic-pledge"
+
+    "axe.com":
+      - "axe.com/products/body-spray/phoenix-body-spray"
+      - "axe.com/products/shower-gel/excite-body-wash"
+      - "axe.com/collections/black-collection"
+      - "axe.com/tips/grooming/how-to-apply-body-spray"
+      - "axe.com/about/brand-story"
+      - "axe.com/customer-service/contact-us"
+      - "axe.com/products/hair-care/anti-dandruff-shampoo"
+      - "axe.com/collections/signature-series"
+      - "axe.com/cart/checkout"
+      - "axe.com/where-to-buy"
+
+    "hellmanns.com":
+      - "hellmanns.com/products/mayonnaise/real-mayonnaise"
+      - "hellmanns.com/products/dressings/honey-mustard"
+      - "hellmanns.com/recipes/classic-potato-salad"
+      - "hellmanns.com/tips/cooking/mayo-substitutes"
+      - "hellmanns.com/about/our-history"
+      - "hellmanns.com/sustainability/recycling-program"
+      - "hellmanns.com/products/vegan/vegan-mayo"
+      - "hellmanns.com/recipes/burger-sauce"
+      - "hellmanns.com/where-to-buy"
+      - "hellmanns.com/products/organic/organic-mayo"
+
+    "benandjerrys.com":
+      - "benandjerrys.com/flavors/chocolate-chip-cookie-dough"
+      - "benandjerrys.com/flavors/half-baked-ice-cream"
+      - "benandjerrys.com/values/fairtrade"
+      - "benandjerrys.com/whats-new/new-flavors"
+      - "benandjerrys.com/about-us/history"
+      - "benandjerrys.com/contact-us"
+      - "benandjerrys.com/flavors/non-dairy"
+      - "benandjerrys.com/values/climate-justice"
+      - "benandjerrys.com/where-to-buy"
+      - "benandjerrys.com/flavors/cores"
+
+    "vaseline.com":
+      - "vaseline.com/products/jelly/original-petroleum-jelly"
+      - "vaseline.com/products/lotions/intensive-care-advanced-repair"
+      - "vaseline.com/skin-health/healing-stories"
+      - "vaseline.com/tips/skin-care/winter-skincare-routine"
+      - "vaseline.com/about/our-heritage"
+      - "vaseline.com/customer-service/help"
+      - "vaseline.com/products/lip-therapy/rosy-lips"
+      - "vaseline.com/healing-project"
+      - "vaseline.com/where-to-buy"
+      - "vaseline.com/products/men/men-healing-moisture"
+
+  # Patterns to determine page category from URL
+  url_category_patterns:
+    "/products/": "Product Pages"
+    "/collections/": "Collections & Lines"
+    "/flavors/": "Collections & Lines"
+    "/tips/": "Tips & Advice"
+    "/recipes/": "Tips & Advice"
+    "/sustainability/": "Sustainability"
+    "/values/": "Sustainability"
+    "/healing-project/": "Sustainability"
+    "/about/": "About Us"
+    "/about-us/": "About Us"
+    "/customer-service/": "Customer Service"
+    "/contact-us/": "Customer Service"
+    "/help/": "Customer Service"
+    "/cart/": "Shopping Cart"
+    "/checkout/": "Shopping Cart"
+    "/where-to-buy/": "Where to Buy"
+
+  # Event types for tracking website behavior
+  event_types:
+    - "page_view"
+    - "click"
+    - "scroll"
+    - "form_submit"
+    - "purchase"
+    - "add_to_cart"
+    - "remove_from_cart"
+    - "login"
+    - "logout"
+    - "product_view"
+    - "store_locator_search"
+    - "ingredient_info_view"
+    - "recipe_view"
+    - "sustainability_info"
+    - "sample_request"
+    - "product_comparison"
+    - "coupon_download"
+
+  # Device types for website access
+  device_types:
+    - "desktop"
+    - "mobile"
+    - "tablet"
+
+  # Browsers used
+  browsers:
+    - "Chrome"
+    - "Firefox"
+    - "Safari"
+    - "Edge"
+    - "Opera"
+
+  # Referring sites
+  referrer_urls:
+    - "https://www.google.com/search"
+    - "https://www.facebook.com/"
+    - "https://www.instagram.com/"
+    - "https://www.pinterest.com/"
+    - "https://www.tiktok.com/"
+    - "https://www.target.com/"
+    - "https://www.walmart.com/"
+    - "https://www.amazon.com/"
+    - "https://www.allrecipes.com/"
+    - "https://www.ulta.com/"
+    - "https://www.sephora.com/"
+    - "" # Direct traffic
+
+  # Event weights by page category - determines likelihood of each event type
+  event_weights:
+    "Product Pages":
+      page_view: 0.25
+      product_view: 0.25
+      add_to_cart: 0.15
+      click: 0.10
+      ingredient_info_view: 0.10
+      product_comparison: 0.05
+      store_locator_search: 0.05
+      scroll: 0.05
+
+    "Tips & Advice":
+      page_view: 0.30
+      scroll: 0.25
+      click: 0.20
+      product_view: 0.10
+      recipe_view: 0.10
+      add_to_cart: 0.05
+
+    "Sustainability":
+      page_view: 0.35
+      sustainability_info: 0.25
+      scroll: 0.20
+      click: 0.15
+      form_submit: 0.05
+
+    "Shopping Cart":
+      page_view: 0.20
+      form_submit: 0.25
+      purchase: 0.25
+      click: 0.15
+      remove_from_cart: 0.10
+      store_locator_search: 0.05
+
+# CRM related configuration
+crm:
+  # Loyalty program tiers with distribution weights
+  loyalty_tiers:
+    Bronze: 0.45
+    Silver: 0.30
+    Gold: 0.15
+    Platinum: 0.08
+    Diamond: 0.02
+
+  # Loyalty points ranges by tier
+  loyalty_points_ranges:
+    Bronze:
+      min: 0
+      max: 1000
+      scale: 200
+    Silver:
+      min: 1000
+      max: 5000
+      scale: 500
+    Gold:
+      min: 5000
+      max: 15000
+      scale: 1000
+    Platinum:
+      min: 15000
+      max: 50000
+      scale: 2000
+    Diamond:
+      min: 50000
+      max: 100000
+      scale: 5000
+
+  # Gender options in CRM with distribution weights
+  genders:
+    Female: 0.65
+    Male: 0.30
+    "Non-binary": 0.03
+    "Prefer not to say": 0.02
+    
+  # Countries for user location with distribution weights
+  countries:
+    USA: 0.25
+    UK: 0.15
+    Germany: 0.10
+    France: 0.10
+    Australia: 0.05
+    Japan: 0.05
+    Brazil: 0.05
+    China: 0.05
+    India: 0.05
+    Italy: 0.05
+    Spain: 0.05
+    Mexico: 0.05
+
+  # Marketing consent distribution
+  marketing_consent_weights:
+    True: 0.90
+    False: 0.10
+
+# Product catalog configuration
+products:
+  # Product hierarchy
+  structure:
+    Personal_Care:
+      Skin_Care:
+        - "Body Lotion"
+        - "Body Wash"
+        - "Petroleum Jelly"
+        - "Hand Cream"
+        - "Facial Cleanser"
+      Hair_Care:
+        - "Shampoo"
+        - "Conditioner"
+        - "Hair Treatment"
+        - "Styling Product"
+      Deodorants:
+        - "Antiperspirant Stick"
+        - "Body Spray"
+        - "Roll-On Deodorant"
+      Lip_Care:
+        - "Lip Balm"
+        - "Lip Therapy"
+        - "Tinted Lip Balm"
+
+    Food_Refreshment:
+      Condiments:
+        - "Mayonnaise"
+        - "Ketchup"
+        - "Mustard"
+        - "Salad Dressing"
+      Ice_Cream:
+        - "Pint Ice Cream"
+        - "Ice Cream Bars"
+        - "Non-Dairy Frozen Dessert"
+        - "Sorbet"
+      Tea:
+        - "Black Tea"
+        - "Green Tea"
+        - "Herbal Tea"
+      Spreads:
+        - "Margarine"
+        - "Butter Blend"
+        - "Plant-Based Spread"
+
+    Home_Care:
+      Laundry:
+        - "Laundry Detergent"
+        - "Fabric Softener"
+        - "Stain Remover"
+      Home_Cleaning:
+        - "Surface Cleaner"
+        - "Bathroom Cleaner"
+        - "Kitchen Cleaner"
+      Dish_Care:
+        - "Dish Soap"
+        - "Dishwasher Detergent"
+
+    Sustainability:
+      Eco_friendly:
+        - "Refillable Container"
+        - "Recyclable Packaging"
+        - "Biodegradable Formula"
+
+  # Brand families and product lines
+  brands:
+    Dove:
+      - "Deep Moisture"
+      - "Sensitive Skin"
+      - "Go Fresh"
+      - "Men+Care"
+      - "DermaSeries"
+
+    Axe:
+      - "Phoenix"
+      - "Apollo"
+      - "Excite"
+      - "Dark Temptation"
+      - "Black Collection"
+
+    Hellmanns:
+      - "Real Mayonnaise"
+      - "Light Mayonnaise"
+      - "Organic"
+      - "Vegan"
+      - "Salad Dressings"
+
+    "Ben & Jerrys":
+      - "Chunky Monkey"
+      - "Cherry Garcia"
+      - "Half Baked"
+      - "Phish Food"
+      - "Non-Dairy"
+
+    Vaseline:
+      - "Original"
+      - "Intensive Care"
+      - "Men"
+      - "Lip Therapy"
+      - "Aloe Soothe"
+
+# Sales transaction configuration
+sales:
+  # Payment methods
+  payment_methods:
+    - "Credit Card"
+    - "Debit Card"
+    - "PayPal"
+    - "Apple Pay"
+    - "Google Pay"
+    - "Amazon Pay"
+    - "Gift Card"
+
+  # Currencies
+  currencies:
+    - "USD"
+    - "EUR"
+    - "GBP"
+    - "CAD"
+    - "AUD"
+
+  # Sales channels
+  channels:
+    - "Brand Website"
+    - "Grocery Stores"
+    - "Mass Merchandisers"
+    - "Drug Stores"
+    - "Specialty Retailers"
+    - "Online Marketplaces"
+
+  # Store IDs (sample of retail partners)
+  store_ids:
+    - "WM001" # Walmart
+    - "TG001" # Target
+    - "KR001" # Kroger
+    - "CVS001" # CVS
+    - "WG001" # Walgreens
+    - "AM001" # Amazon
+    - "ULTA001" # Ulta
+    - "SEPH001" # Sephora
+    - "WF001" # Whole Foods
+    - "SP001" # Shop Direct
+
+# Data provider configuration
+data_providers:
+  # List of data providers
+  providers:
+    - { id: 1, name: "Experian" }
+    - { id: 2, name: "Acxiom" }
+    - { id: 3, name: "Nielsen" }
+    - { id: 4, name: "TransUnion" }
+    - { id: 5, name: "Epsilon" }
+
+  # Segment structure for customer data
+  segment_structure:
+    Demographics:
+      Age:
+        - "18-24"
+        - "25-34"
+        - "35-44"
+        - "45-54"
+        - "55-64"
+        - "65+"
+      Gender:
+        - "Male"
+        - "Female"
+        - "Non-binary"
+      Income:
+        - "<$30K"
+        - "$30K-50K"
+        - "$50K-75K"
+        - "$75K-100K"
+        - "$100K-150K"
+        - "$150K+"
+      Household:
+        - "Single"
+        - "Couples"
+        - "Family with Children"
+        - "Empty Nesters"
+
+    Lifestyle:
+      Health_Conscious:
+        - "Organic Buyers"
+        - "Clean Label Seekers"
+        - "Fitness Enthusiasts"
+      Eco_conscious:
+        - "Sustainability Advocates"
+        - "Plastic Reduction"
+        - "Carbon Footprint Aware"
+      Beauty_Routine:
+        - "Minimalist"
+        - "Extensive Routine"
+        - "Natural Products"
+        - "Luxury Seekers"
+
+    Shopping_Behavior:
+      Channel:
+        - "Online Shopper"
+        - "In-Store Shopper"
+        - "Omnichannel"
+        - "Subscribe & Save"
+      Price_Sensitivity:
+        - "Premium Buyer"
+        - "Value Seeker"
+        - "Coupon User"
+        - "Bulk Buyer"
+      Brand_Loyalty:
+        - "Brand Loyal"
+        - "Brand Explorer"
+        - "Private Label Buyer"
+
+    Product_Preferences:
+      Personal_Care:
+        - "Natural Ingredients"
+        - "Fragrance Free"
+        - "Sensitive Skin"
+        - "Anti-Aging"
+      Food:
+        - "Organic Preference"
+        - "Plant-Based"
+        - "Reduced Fat"
+        - "Gourmet"
+      Home_Care:
+        - "Eco-Friendly Products"
+        - "Strong Cleaning"
+        - "Gentle Formulas"
+
+    Digital_Engagement:
+      Social_Media:
+        - "Instagram Active"
+        - "Facebook User"
+        - "TikTok Engaged"
+        - "Pinterest Saver"
+      Content:
+        - "Recipe Searcher"
+        - "How-To Video Viewer"
+        - "Sustainability Content"
+      Marketing:
+        - "Email Subscriber"
+        - "Mobile App User"
+        - "Loyalty Program Member"

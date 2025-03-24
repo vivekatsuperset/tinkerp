@@ -1,0 +1,431 @@
+# L'Oreal brands configuration for data generator
+# User counts and overlapping percentages
+user_counts:
+  total_crm_users: 500000
+  crm_users_with_transactions_percentage: 0.80
+  total_website_events_users: 800000
+  website_users_with_transactions_percentage: 0.30
+  website_users_in_crm_percentage: 0.50
+  total_data_provider_users: 1000000
+  data_provider_users_in_website_percentage: 0.20
+  data_provider_users_in_crm_percentage: 0.35
+
+# Website related configuration
+website:
+  names:
+    - "lancome.com"
+    - "maybelline.com"
+    - "kiehls.com"
+
+  page_categories:
+    - "Product Pages"
+    - "Collection Pages"
+    - "Beauty Tips & Tutorials"
+    - "About Us"
+    - "Customer Service"
+    - "Checkout & Cart"
+
+  page_urls:
+    "lancome.com":
+      - "lancome.com/products/skincare/genifique-serum"
+      - "lancome.com/products/makeup/teint-idole-foundation"
+      - "lancome.com/collections/spring-2025"
+      - "lancome.com/beauty-tips/perfect-winged-eyeliner"
+      - "lancome.com/about/our-history"
+      - "lancome.com/customer-service/returns"
+      - "lancome.com/collections/bestsellers"
+      - "lancome.com/products/fragrance/la-vie-est-belle"
+      - "lancome.com/checkout"
+      - "lancome.com/beauty-tips/skincare-routine-guide"
+
+    "maybelline.com":
+      - "maybelline.com/products/face/fit-me-foundation"
+      - "maybelline.com/products/eyes/sky-high-mascara"
+      - "maybelline.com/collections/tiktok-viral"
+      - "maybelline.com/beauty-tips/no-makeup-makeup-look"
+      - "maybelline.com/about/brand-ambassadors"
+      - "maybelline.com/customer-service/faqs"
+      - "maybelline.com/products/lips/superstay-matte-ink"
+      - "maybelline.com/collections/new-arrivals"
+      - "maybelline.com/checkout/payment"
+      - "maybelline.com/beauty-tips/concealer-hacks"
+
+    "kiehls.com":
+      - "kiehls.com/products/moisturizers/ultra-facial-cream"
+      - "kiehls.com/products/cleansers/midnight-recovery-cleansing-oil"
+      - "kiehls.com/collections/mens"
+      - "kiehls.com/beauty-tips/anti-aging-skincare-routine"
+      - "kiehls.com/about/sustainability-initiatives"
+      - "kiehls.com/customer-service/contact-us"
+      - "kiehls.com/products/eye-care/avocado-eye-cream"
+      - "kiehls.com/collections/bestsellers"
+      - "kiehls.com/checkout/shipping"
+      - "kiehls.com/beauty-tips/skin-hydration-guide"
+
+  # Patterns to determine page category from URL
+  url_category_patterns:
+    "/products/": "Product Pages"
+    "/collections/": "Collection Pages"
+    "/beauty-tips/": "Beauty Tips & Tutorials"
+    "/about/": "About Us"
+    "/customer-service/": "Customer Service"
+    "/checkout": "Checkout & Cart"
+
+  # Event types for tracking website behavior
+  event_types:
+    - "page_view"
+    - "click"
+    - "scroll"
+    - "form_submit"
+    - "purchase"
+    - "add_to_cart"
+    - "remove_from_cart"
+    - "login"
+    - "logout"
+    - "product_view"
+    - "search"
+    - "product_comparison"
+    - "email_signup"
+    - "wishlist_add"
+    - "shade_finder_usage"
+    - "virtual_try_on"
+    - "review_view"
+    - "review_submit"
+
+  # Device types for website access
+  device_types:
+    - "desktop"
+    - "mobile"
+    - "tablet"
+
+  # Browsers used
+  browsers:
+    - "Chrome"
+    - "Firefox"
+    - "Safari"
+    - "Edge"
+    - "Opera"
+
+  # Referring sites
+  referrer_urls:
+    - "https://www.google.com/search"
+    - "https://www.facebook.com/"
+    - "https://www.instagram.com/"
+    - "https://www.pinterest.com/"
+    - "https://www.twitter.com/"
+    - "https://www.tiktok.com/"
+    - "https://www.youtube.com/"
+    - "https://www.sephora.com/"
+    - "https://www.ulta.com/"
+    - "" # Direct traffic
+
+  # Event weights by page category - determines likelihood of each event type
+  event_weights:
+    "Product Pages":
+      page_view: 0.25
+      product_view: 0.20
+      add_to_cart: 0.15
+      click: 0.10
+      wishlist_add: 0.10
+      shade_finder_usage: 0.07
+      virtual_try_on: 0.05
+      review_view: 0.05
+      scroll: 0.03
+
+    "Beauty Tips & Tutorials":
+      page_view: 0.35
+      scroll: 0.25
+      click: 0.15
+      product_view: 0.10
+      email_signup: 0.05
+      search: 0.05
+      add_to_cart: 0.05
+
+    "Checkout & Cart":
+      page_view: 0.20
+      form_submit: 0.20
+      purchase: 0.25
+      click: 0.15
+      remove_from_cart: 0.10
+      scroll: 0.05
+      login: 0.05
+
+# CRM related configuration
+crm:
+  # Loyalty program tiers with distribution weights
+  loyalty_tiers:
+    Bronze: 0.40
+    Silver: 0.30
+    Gold: 0.20
+    Platinum: 0.08
+    Diamond: 0.02
+
+  # Loyalty points ranges by tier
+  loyalty_points_ranges:
+    Bronze:
+      min: 0
+      max: 1000
+      scale: 200
+    Silver:
+      min: 1000
+      max: 5000
+      scale: 500
+    Gold:
+      min: 5000
+      max: 15000
+      scale: 1000
+    Platinum:
+      min: 15000
+      max: 50000
+      scale: 2000
+    Diamond:
+      min: 50000
+      max: 100000
+      scale: 5000
+
+  # Gender options in CRM with distribution weights
+  genders:
+    Female: 0.72
+    Male: 0.25
+    "Non-binary": 0.02
+    "Prefer not to say": 0.01
+    
+  # Countries for user location with distribution weights
+  countries:
+    USA: 0.35
+    Canada: 0.10
+    UK: 0.15
+    Germany: 0.08
+    France: 0.08
+    Australia: 0.05
+    Japan: 0.05
+    Brazil: 0.04
+    India: 0.03
+    Italy: 0.01
+    Spain: 0.02
+    Mexico: 0.04
+
+  # Marketing consent distribution
+  marketing_consent_weights:
+    True: 0.92
+    False: 0.08
+
+# Product catalog configuration
+products:
+  # Product hierarchy
+  structure:
+    Skincare:
+      Cleansers:
+        - "Foaming Cleanser"
+        - "Cleansing Oil"
+        - "Micellar Water"
+        - "Cleansing Balm"
+      Moisturizers:
+        - "Day Cream"
+        - "Night Cream"
+        - "Gel Moisturizer"
+        - "Facial Oil"
+      Serums:
+        - "Vitamin C Serum"
+        - "Hyaluronic Acid Serum"
+        - "Retinol Serum"
+        - "Niacinamide Serum"
+      Masks:
+        - "Sheet Mask"
+        - "Clay Mask"
+        - "Overnight Mask"
+        - "Peel-off Mask"
+      Eye Care:
+        - "Eye Cream"
+        - "Eye Serum"
+        - "Eye Patches"
+
+    Makeup:
+      Face:
+        - "Foundation"
+        - "Concealer"
+        - "Powder"
+        - "Blush"
+        - "Bronzer"
+        - "Highlighter"
+      Eyes:
+        - "Mascara"
+        - "Eyeshadow"
+        - "Eyeliner"
+        - "Brow Pencil"
+        - "Brow Gel"
+      Lips:
+        - "Lipstick"
+        - "Lip Gloss"
+        - "Lip Liner"
+        - "Lip Balm"
+        - "Liquid Lipstick"
+
+    Fragrance:
+      Women:
+        - "Eau de Parfum"
+        - "Eau de Toilette"
+      Men:
+        - "Cologne"
+        - "Aftershave"
+
+    Hair Care:
+      Shampoo:
+        - "Moisturizing Shampoo"
+        - "Clarifying Shampoo"
+        - "Color Protect Shampoo"
+      Conditioner:
+        - "Deep Conditioner"
+        - "Leave-in Conditioner"
+        - "Hair Mask"
+      Styling:
+        - "Hair Spray"
+        - "Hair Oil"
+        - "Heat Protectant"
+        - "Styling Cream"
+
+  # Brand and product lines
+  brands:
+    Lancôme:
+      - "Génifique"
+      - "Teint Idole"
+      - "La Vie Est Belle"
+      - "L'Absolu Rouge"
+      - "Rénergie"
+      - "Advanced Génifique"
+
+    Maybelline:
+      - "Fit Me"
+      - "Sky High"
+      - "SuperStay"
+      - "Color Sensational"
+      - "Age Rewind"
+      - "Lash Sensational"
+
+    Kiehl's:
+      - "Ultra Facial"
+      - "Midnight Recovery"
+      - "Avocado Eye Cream"
+      - "Calendula"
+      - "Powerful-Strength"
+      - "Rare Earth"
+
+# Sales transaction configuration
+sales:
+  # Payment methods
+  payment_methods:
+    - "Credit Card"
+    - "Debit Card"
+    - "PayPal"
+    - "Apple Pay"
+    - "Google Pay"
+    - "Gift Card"
+    - "Klarna"
+    - "AfterPay"
+
+  # Currencies
+  currencies:
+    - "USD"
+    - "EUR"
+    - "GBP"
+    - "CAD"
+    - "AUD"
+    - "JPY"
+
+  # Sales channels
+  channels:
+    - "Brand Website"
+    - "Mobile App"
+    - "Department Store"
+    - "Specialty Beauty Retailer"
+    - "Flagship Store"
+    - "Marketplace"
+
+  # Store IDs (50 stores)
+  store_ids:
+    - "ST001"
+    - "ST002"
+    - "ST003"
+    # ... more store IDs would be defined here
+
+# Data provider configuration
+data_providers:
+  # List of data providers
+  providers:
+    - { id: 1, name: "Experian" }
+    - { id: 2, name: "Acxiom" }
+    - { id: 3, name: "Nielsen" }
+    - { id: 4, name: "TransUnion" }
+    - { id: 5, name: "Epsilon" }
+
+  # Segment structure for customer data
+  segment_structure:
+    Demographics:
+      Age:
+        - "18-24"
+        - "25-34"
+        - "35-44"
+        - "45-54"
+        - "55-64"
+        - "65+"
+      Income:
+        - "<$30K"
+        - "$30K-50K"
+        - "$50K-75K"
+        - "$75K-100K"
+        - "$100K-150K"
+        - "$150K+"
+      Household:
+        - "Single"
+        - "Married"
+        - "Family with Children"
+        - "Empty Nesters"
+
+    Beauty Profile:
+      Skin Type:
+        - "Dry"
+        - "Oily"
+        - "Combination"
+        - "Normal"
+        - "Sensitive"
+      Concerns:
+        - "Anti-Aging"
+        - "Acne"
+        - "Hyperpigmentation"
+        - "Redness"
+        - "Dullness"
+      Makeup Preferences:
+        - "Natural Look"
+        - "Full Coverage"
+        - "Bold Lips"
+        - "Statement Eyes"
+        - "Minimal Makeup"
+
+    Shopping Behavior:
+      Purchase Frequency:
+        - "Weekly Shopper"
+        - "Monthly Shopper"
+        - "Seasonal Shopper"
+        - "Special Occasion"
+      Price Sensitivity:
+        - "Luxury Buyer"
+        - "Mid-range"
+        - "Budget Conscious"
+        - "Sale Shopper"
+      Channel Preference:
+        - "Online Only"
+        - "In-Store Only"
+        - "Omnichannel"
+
+    Digital Engagement:
+      Social Media:
+        - "Instagram Active"
+        - "TikTok User"
+        - "YouTube Beauty Viewer"
+        - "Pinterest Beauty Boards"
+        - "Not Social Media Active"
+      Content Engagement:
+        - "Tutorial Viewer"
+        - "Review Reader"
+        - "Virtual Try-on User"
+        - "Beauty Quiz Taker"

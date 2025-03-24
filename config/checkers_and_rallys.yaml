@@ -1,0 +1,417 @@
+# Checkers and Rally's configuration for data generator
+# User counts and overlapping percentages
+user_counts:
+  total_crm_users: 500000
+  crm_users_with_transactions_percentage: 0.80
+  total_website_events_users: 800000
+  website_users_with_transactions_percentage: 0.30
+  website_users_in_crm_percentage: 0.50
+  total_data_provider_users: 1000000
+  data_provider_users_in_website_percentage: 0.20
+  data_provider_users_in_crm_percentage: 0.35
+
+# Website related configuration
+website:
+  names:
+    - "checkersandrallys.com"
+
+  page_categories:
+    - "Menu Items"
+    - "Locations"
+    - "Deals & Promotions"
+    - "Order Online"
+    - "Rewards & App"
+    - "About Us"
+    - "Customer Service"
+    - "Checkout"
+
+  page_urls:
+    "checkersandrallys.com":
+      - "checkersandrallys.com/menu/big-buford"
+      - "checkersandrallys.com/menu/fries"
+      - "checkersandrallys.com/menu/wings"
+      - "checkersandrallys.com/menu/shakes"
+      - "checkersandrallys.com/menu/value-deals"
+      - "checkersandrallys.com/locations/store-finder"
+      - "checkersandrallys.com/promotions/current-deals"
+      - "checkersandrallys.com/order-online"
+      - "checkersandrallys.com/about/our-story"
+      - "checkersandrallys.com/rewards/sign-up"
+      - "checkersandrallys.com/customer-service/contact-us"
+      - "checkersandrallys.com/checkout/payment"
+      - "checkersandrallys.com/menu/combos"
+      - "checkersandrallys.com/menu/kids-meals"
+
+  # Patterns to determine page category from URL
+  url_category_patterns:
+    "/menu/": "Menu Items"
+    "/locations/": "Locations"
+    "/promotions/": "Deals & Promotions"
+    "/order-online": "Order Online"
+    "/rewards/": "Rewards & App"
+    "/about/": "About Us"
+    "/customer-service/": "Customer Service"
+    "/checkout/": "Checkout"
+
+  # Event types for tracking website behavior
+  event_types:
+    - "page_view"
+    - "click"
+    - "scroll"
+    - "form_submit"
+    - "purchase"
+    - "add_to_cart"
+    - "remove_from_cart"
+    - "login"
+    - "logout"
+    - "menu_view"
+    - "location_search"
+    - "coupon_view"
+    - "app_download"
+    - "rewards_signup"
+    - "order_customization"
+    - "delivery_search"
+
+  # Device types for website access
+  device_types:
+    - "desktop"
+    - "mobile"
+    - "tablet"
+
+  # Browsers used
+  browsers:
+    - "Chrome"
+    - "Firefox"
+    - "Safari"
+    - "Edge"
+    - "Opera"
+
+  # Referring sites
+  referrer_urls:
+    - "https://www.google.com/search"
+    - "https://www.facebook.com/"
+    - "https://www.instagram.com/"
+    - "https://www.tiktok.com/"
+    - "https://www.yelp.com/"
+    - "https://www.doordash.com/"
+    - "https://www.ubereats.com/"
+    - "https://www.grubhub.com/"
+    - "https://maps.google.com/"
+    - "" # Direct traffic
+
+  # Event weights by page category - determines likelihood of each event type
+  event_weights:
+    "Menu Items":
+      page_view: 0.30
+      menu_view: 0.25
+      click: 0.15
+      add_to_cart: 0.15
+      order_customization: 0.10
+      scroll: 0.05
+
+    "Locations":
+      page_view: 0.30
+      location_search: 0.35
+      click: 0.15
+      delivery_search: 0.15
+      scroll: 0.05
+
+    "Deals & Promotions":
+      page_view: 0.30
+      coupon_view: 0.30
+      click: 0.20
+      add_to_cart: 0.15
+      scroll: 0.05
+
+    "Order Online":
+      page_view: 0.20
+      add_to_cart: 0.25
+      order_customization: 0.20
+      form_submit: 0.15
+      click: 0.10
+      remove_from_cart: 0.05
+      scroll: 0.05
+
+    "Rewards & App":
+      page_view: 0.25
+      rewards_signup: 0.25
+      app_download: 0.20
+      form_submit: 0.15
+      click: 0.10
+      scroll: 0.05
+
+    "Checkout":
+      page_view: 0.15
+      form_submit: 0.30
+      purchase: 0.30
+      click: 0.15
+      remove_from_cart: 0.10
+
+# CRM related configuration
+crm:
+  # Loyalty program tiers with distribution weights
+  loyalty_tiers:
+    New Member: 0.40
+    Regular: 0.30
+    Big Deal: 0.20
+    VIP: 0.10
+
+  # Loyalty points ranges by tier
+  loyalty_points_ranges:
+    "New Member":
+      min: 0
+      max: 500
+      scale: 100
+    Regular:
+      min: 500
+      max: 2000
+      scale: 250
+    "Big Deal":
+      min: 2000
+      max: 5000
+      scale: 500
+    VIP:
+      min: 5000
+      max: 10000
+      scale: 1000
+
+  # Gender options in CRM with distribution weights
+  genders:
+    Male: 0.55
+    Female: 0.40
+    "Non-binary": 0.03
+    "Prefer not to say": 0.02
+    
+  # Countries for user location with distribution weights
+  countries:
+    USA: 0.85
+    Canada: 0.10
+    Mexico: 0.03
+    UK: 0.02
+
+  # Marketing consent distribution
+  marketing_consent_weights:
+    True: 0.85
+    False: 0.15
+
+# Product catalog configuration
+products:
+  # Product hierarchy
+  structure:
+    Burgers:
+      Signature:
+        - "Big Buford"
+        - "Baconzilla"
+        - "Cheese Champ"
+        - "Smoky BBQ Bacon"
+      Classic:
+        - "Checkerburger"
+        - "Rallyburger"
+        - "Double Cheeseburger"
+        - "Quarter Pound"
+
+    Chicken:
+      Sandwiches:
+        - "Classic Crispy Chicken"
+        - "Spicy Chicken"
+        - "BBQ Bacon Chicken"
+      Wings:
+        - "Classic Wings"
+        - "Garlic Parmesan Wings"
+        - "Buffalo Wings"
+      Tenders:
+        - "Classic Tenders"
+        - "Spicy Tenders"
+
+    Sides:
+      Fries:
+        - "Famous Seasoned Fries"
+        - "Cheese Fries"
+        - "Bacon Cheese Fries"
+        - "Fully Loaded Fries"
+      Other:
+        - "Monsterella Stix"
+        - "Fried Pickles"
+        - "Onion Rings"
+
+    Beverages:
+      Shakes:
+        - "Chocolate Shake"
+        - "Vanilla Shake"
+        - "Strawberry Shake"
+        - "Oreo Shake"
+        - "Birthday Cake Shake"
+      Soft_Drinks:
+        - "Coca-Cola"
+        - "Diet Coke"
+        - "Sprite"
+        - "Dr Pepper"
+        - "Lemonade"
+
+    Desserts:
+      Sweet_Treats:
+        - "Apple Pie"
+        - "Funnel Cake Fries"
+        - "Cinnamon Roll"
+
+    Value_Meals:
+      Combos:
+        - "2 for $3"
+        - "4 for $4"
+        - "$5 Box"
+        - "Family Pack"
+      Kids:
+        - "Kids Burger Meal"
+        - "Kids Chicken Meal"
+
+  # Restaurant brands and locations
+  brands:
+    Checkers:
+      - "Florida"
+      - "Georgia"
+      - "Alabama"
+      - "Michigan"
+      - "Ohio"
+      - "Pennsylvania"
+
+    Rallys:
+      - "California"
+      - "Indiana"
+      - "Kentucky"
+      - "New York"
+      - "Tennessee"
+      - "Texas"
+
+# Sales transaction configuration
+sales:
+  # Payment methods
+  payment_methods:
+    - "Credit Card"
+    - "Debit Card"
+    - "PayPal"
+    - "Apple Pay"
+    - "Google Pay"
+    - "Cash"
+    - "Gift Card"
+
+  # Currencies (primarily USD since it's a US-based chain)
+  currencies:
+    - "USD"
+
+  # Sales channels
+  channels:
+    - "Drive-Thru"
+    - "In-Store"
+    - "Website"
+    - "Mobile App"
+    - "Delivery Service"
+    - "Curbside Pickup"
+
+  # Store IDs (sample of locations)
+  store_ids:
+    - "FL001"
+    - "FL002"
+    - "GA001"
+    - "GA002"
+    - "AL001"
+    - "MI001"
+    - "OH001"
+    - "PA001"
+    - "CA001"
+    - "CA002"
+    - "IN001"
+    - "KY001"
+    - "NY001"
+    - "TN001"
+    - "TX001"
+
+# Data provider configuration
+data_providers:
+  # List of data providers
+  providers:
+    - { id: 1, name: "Experian" }
+    - { id: 2, name: "Acxiom" }
+    - { id: 3, name: "Nielsen" }
+    - { id: 4, name: "TransUnion" }
+    - { id: 5, name: "Epsilon" }
+
+  # Segment structure for customer data
+  segment_structure:
+    Demographics:
+      Age:
+        - "18-24"
+        - "25-34"
+        - "35-44"
+        - "45-54"
+        - "55-64"
+        - "65+"
+      Income:
+        - "<$30K"
+        - "$30K-50K"
+        - "$50K-75K"
+        - "$75K-100K"
+        - "$100K+"
+      Household:
+        - "Single"
+        - "Couples"
+        - "Family with Children"
+        - "Empty Nesters"
+
+    Visit_Patterns:
+      Frequency:
+        - "Daily Visitor"
+        - "Weekly Visitor"
+        - "Monthly Visitor"
+        - "Occasional"
+      Time_of_Day:
+        - "Breakfast"
+        - "Lunch"
+        - "Dinner"
+        - "Late Night"
+      Day_of_Week:
+        - "Weekday"
+        - "Weekend"
+        - "Both"
+
+    Order_Behavior:
+      Order_Type:
+        - "Drive-Thru"
+        - "In-Store"
+        - "Delivery"
+        - "Mobile App"
+      Order_Size:
+        - "Individual"
+        - "Couple"
+        - "Family"
+        - "Group/Party"
+      Spending:
+        - "Value Seeker"
+        - "Average Spender"
+        - "Big Spender"
+
+    Food_Preferences:
+      Menu:
+        - "Burger Lover"
+        - "Chicken Fan"
+        - "Fries Enthusiast"
+        - "Shake Aficionado"
+        - "Combo Meal Regular"
+      Dietary:
+        - "Health Conscious"
+        - "Indulgent Eater"
+        - "Deal Hunter"
+
+    Digital_Engagement:
+      App_Usage:
+        - "App Power User"
+        - "Occasional App User"
+        - "Non-App User"
+      Rewards:
+        - "Rewards Member"
+        - "Non-Member"
+      Marketing:
+        - "Email Subscriber"
+        - "SMS Subscriber"
+        - "Social Follower"
+        - "Non-Engaged"
+
